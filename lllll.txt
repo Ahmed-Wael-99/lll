@@ -1,0 +1,34 @@
+Without LSP:
+
+class Bird:
+    def fly(self):
+        pass
+
+class Eagle(Bird):
+    def fly(self):
+        return "Flying high!"
+
+class Penguin(Bird):
+    def fly(self):
+        raise NotImplementedError
+
+
+With LSP:
+
+from abc import ABC, abstractmethod
+
+class Flyable(ABC):
+    @abstractmethod
+    def fly(self):
+        pass
+
+class Bird:
+    pass
+
+class Eagle(Bird, Flyable):
+    def fly(self):
+        return "Flying high!"
+
+class Penguin(Bird):
+    def swim(self):
+        return "Swimming!"
